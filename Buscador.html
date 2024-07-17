@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Cidades</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #333;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pesquisa de Cidades</h1>
+    <input type="text" id="search" placeholder="Digite o nome da cidade..." onkeyup="filterCities()">
+
+    <ul id="cityList">
+        <li>São Paulo</li>
+        <li>Rio de Janeiro</li>
+        <li>Belo Horizonte</li>
+        <li>Curitiba</li>
+        <li>Porto Alegre</li>
+        <li>Salvador</li>
+        <li>Fortaleza</li>
+        <li>Brasília</li>
+        <li>Recife</li>
+        <li>Manaus</li>
+    </ul>
+
+    <script>
+        function filterCities() {
+            const input = document.getElementById('search');
+            const filter = input.value.toLowerCase();
+            const ul = document.getElementById("cityList");
+            const li = ul.getElementsByTagName('li');
+
+            for (let i = 0; i < li.length; i++) {
+                const city = li[i].textContent || li[i].innerText;
+                if (city.toLowerCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
